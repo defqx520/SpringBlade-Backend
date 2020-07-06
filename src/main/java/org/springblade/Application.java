@@ -18,6 +18,7 @@ package org.springblade;
 import org.springblade.common.constant.LauncherConstant;
 import org.springblade.core.launch.BladeApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -30,7 +31,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class Application {
 
 	public static void main(String[] args) {
-		BladeApplication.run(LauncherConstant.APPLICATION_NAME, Application.class, args);
+		ApplicationContext applicationContext = BladeApplication.run(LauncherConstant.APPLICATION_NAME, Application.class, args);
+		Object bean = applicationContext.getBean("driver");
 	}
 
 }

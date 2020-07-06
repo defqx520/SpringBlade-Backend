@@ -32,3 +32,9 @@ blade:
     remote-path: /usr/share/nginx/html
     remote-path-iis: D://iis/html
     log-mode: true
+
+
+neo4j:
+  url: bolt://localhost:7687
+  username: neo4j
+  password: root
