@@ -4,6 +4,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springblade.core.tool.api.R;
+import org.springblade.modules.metamodel.entity.NeoNode;
 import org.springblade.modules.metamodel.service.NeoService;
 import org.springblade.modules.system.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,9 +35,10 @@ public class NeoController {
 	@PostMapping("/addNode")
 	@ApiOperationSupport(order = 4)
 	@ApiOperation(value = "新增图节点", notes = "传入User")
-	public R addNode(@RequestParam Map<String,Object> param) {
-		System.out.println(param);
-		return R.status(neoService.addNode());
+	public R addNode(@RequestBody NeoNode neoNode) {
+		String label = neoNode.getLabel();
+		List<Map<String, Object>> properties = neoNode.getDynamic();
+		return R.status(neoService.addNode(label, properties));
 	}
 
 }
