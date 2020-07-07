@@ -14,7 +14,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/blade?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
     username: root
-    password: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   #neo4j配置
@@ -22,7 +22,7 @@ spring:
     neo4j:
       uri: bolt://localhost:7687
       username: neo4j
-      password: root
+      password: 123456
 
 #blade配置
 blade:
