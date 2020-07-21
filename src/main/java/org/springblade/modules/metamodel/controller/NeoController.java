@@ -4,6 +4,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springblade.core.tool.api.R;
+import org.springblade.modules.metamodel.dto.NodeDto;
 import org.springblade.modules.metamodel.entity.NeoNode;
 import org.springblade.modules.metamodel.entity.NeoRelation;
 import org.springblade.modules.metamodel.service.NeoService;
@@ -40,8 +41,10 @@ public class NeoController {
 	@ApiOperation(value = "新增图节点", notes = "传入neoNode")
 	public R addNode(@RequestBody NeoNode neoNode) {
 		String label = neoNode.getLabel();
-		List<Map<String, Object>> properties = neoNode.getDynamic();
-		return R.status(neoService.addNode(label, properties));
+		String neoName = neoNode.getNeoName();
+		String neoResType = neoNode.getNeoResType();
+		List<Map<String, String>> other = neoNode.getOther();
+		return R.status(neoService.addNode(label, neoName, neoResType, other));
 	}
 
 	/**
@@ -54,8 +57,9 @@ public class NeoController {
 		Integer startNode = neoRelation.getStartNode();  //起始节点的ID
 		Integer endNode = neoRelation.getEndNode();
 		String label = neoRelation.getLabel();
-		List<Map<String, Object>> properties = neoRelation.getDynamic();
-		return R.status(neoService.addRelation(startNode, endNode, label, properties));
+		String neoName = neoRelation.getNeoName();
+		List<Map<String, String>> properties = neoRelation.getOther();
+		return R.status(neoService.addRelation(startNode, endNode, label, neoName, properties));
 	}
 
 	/**
@@ -68,5 +72,27 @@ public class NeoController {
 		List<Map<String,Object>> list = neoService.getAllNodesAsSelect();
 		return R.data(list);
 	}
+
+	/**
+	 * 获取所有图节点
+	 * @return
+	 */
+	@GetMapping("/loadNetworkData")
+	@ApiOperation(value = "获取所有图节点和边", notes = "无需传参")
+	public R loadNetworkData() {
+		Map<String,Object> res = new HashMap<>();
+		res.put("nodes", neoService.getAllNodes());
+		res.put("edges", neoService.getAllEdges());
+		return R.data(res);
+	}
+
+	@GetMapping("/getNodeById")
+	@ApiOperation(value = "根据ID获取节点", notes = "传入节点Id")
+	public R getNodeById(@RequestParam("nodeId") Integer nodeId) {
+		List<Map<String, Object>> res = new ArrayList<>();
+		res = neoService.getNodeById(nodeId);
+		return R.data(res);
+	}
+
 
 }

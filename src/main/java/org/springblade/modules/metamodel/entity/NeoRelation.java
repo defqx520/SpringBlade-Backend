@@ -9,8 +9,10 @@ import java.util.Map;
 @Data
 @Component
 public class NeoRelation {
+	private Integer id;
 	private Integer startNode;
 	private Integer endNode;
 	private String label;
-	private List<Map<String, Object>> dynamic;
+	private String neoName;   //用于展示名称
+	private List<Map<String, String>> other;  //边上的属性映射key value对
 }

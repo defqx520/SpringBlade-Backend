@@ -53,7 +53,7 @@ public class Neo4jUtil {
 	 * @param cql
 	 * @return
 	 */
-	public static List<Record> getNeoNodes(String cql) {
+	public static List<Record> getNeoNodesOrEdges(String cql) {
 		List<Record> records= new ArrayList<>();
     	try {
 			Session session = driver.session();

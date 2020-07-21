@@ -15,6 +15,7 @@
  */
 package org.springblade;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springblade.common.constant.LauncherConstant;
 import org.springblade.core.launch.BladeApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

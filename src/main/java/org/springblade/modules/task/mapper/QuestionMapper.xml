@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.springblade.modules.task.mapper.QuestionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="questionResultMap" type="org.springblade.modules.task.entity.Question">
+        <id column="id" property="id"/>
+        <result column="model" property="model"/>
+        <result column="feedback_date" property="feedbackDate"/>
+        <result column="inform_no" property="informNo"/>
+        <result column="systen_name" property="systenName"/>
+        <result column="system_code" property="systemCode"/>
+        <result column="fault_product_name" property="faultProductName"/>
+        <result column="fault_product_code" property="faultProductCode"/>
+        <result column="fault_product_no" property="faultProductNo"/>
+        <result column="feedback_information" property="feedbackInformation"/>
+        <result column="reason_analysis" property="reasonAnalysis"/>
+        <result column="reason_type" property="reasonType"/>
+        <result column="solution" property="solution"/>
+        <result column="isrepair" property="isrepair"/>
+        <result column="duty_org" property="dutyOrg"/>
+        <result column="outsource_org" property="outsourceOrg"/>
+        <result column="use_troops" property="useTroops"/>
+        <result column="complete_date" property="completeDate"/>
+    </resultMap>
+
+
+    <select id="getByTaskId" resultMap="questionResultMap">
+        select * from dev_question where task_id = #{taskId}
+    </select>
+
+</mapper>
