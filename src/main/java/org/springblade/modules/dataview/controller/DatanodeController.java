@@ -146,7 +146,7 @@ public class DatanodeController extends BladeController {
 			String createTableSQL = "create table ";
 			String columnsets = "( id  bigint(64) NOT NULL COMMENT '主键id',\n";
 			columnsets = columnsets + "attach_id  bigint(64) NULL COMMENT '原始文件id',\n";
-			columnsets = columnsets + "parent_id  bigint(64) NOT NULL COMMENT '关联节点id',\n";
+//			columnsets = columnsets + "parent_id  bigint(64) NOT NULL COMMENT '关联节点id',\n";
 			columnsets = columnsets + "sort  bigint(64) NOT NULL DEFAULT 0 COMMENT '排序字段',\n";
 			for (Fieldset fd : removeResult) {
 				FieldsetVO fd_t = FieldsetWrapper.build().entityVO(fd);
