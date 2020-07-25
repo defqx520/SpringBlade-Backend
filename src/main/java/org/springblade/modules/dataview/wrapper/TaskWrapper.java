@@ -22,7 +22,7 @@ import org.springblade.core.tool.utils.BeanUtil;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
 import org.springblade.modules.dataview.entity.Task;
-import org.springblade.modules.dataview.service.ITaskService;
+import org.springblade.modules.dataview.service.ITaskCaseService;
 import org.springblade.modules.dataview.vo.TaskVO;
 import org.springblade.modules.system.service.IDictService;
 
@@ -36,12 +36,12 @@ import java.util.stream.Collectors;
  */
 public class TaskWrapper extends BaseEntityWrapper<Task, TaskVO> {
 
-	private static ITaskService taskService;
+	private static ITaskCaseService taskService;
 
 	private static IDictService dictService;
 
 	static {
-		taskService = SpringUtil.getBean(ITaskService.class);
+		taskService = SpringUtil.getBean(ITaskCaseService.class);
 		dictService = SpringUtil.getBean(IDictService.class);
 	}
 

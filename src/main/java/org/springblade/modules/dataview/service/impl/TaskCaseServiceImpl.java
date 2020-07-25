@@ -13,37 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.modules.dataview.service;
+package org.springblade.modules.dataview.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springblade.core.tool.node.ForestNodeMerger;
 import org.springblade.modules.dataview.entity.Task;
+import org.springblade.modules.dataview.mapper.TaskMapper;
+import org.springblade.modules.dataview.service.ITaskCaseService;
 import org.springblade.modules.dataview.vo.TaskVO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- *  服务类
+ *  服务实现类
  *
  * @author Blade
  * @since 2020-07-07
  */
-public interface ITaskService extends IService<Task> {
+@Service
+public class TaskCaseServiceImpl extends ServiceImpl<TaskMapper, Task> implements ITaskCaseService {
 
-	/**
-	 * 自定义分页
-	 *
-	 * @param page
-	 * @param task
-	 * @return
-	 */
-	IPage<TaskVO> selectTaskPage(IPage<TaskVO> page, TaskVO task);
+	@Override
+	public IPage<TaskVO> selectTaskPage(IPage<TaskVO> page, TaskVO task) {
+		return page.setRecords(baseMapper.selectTaskPage(page, task));
+	}
 
-	/**
-	 * 树形结构
-	 *
-	 * @return
-	 */
-	List<TaskVO> tree();
+	@Override
+	public List<TaskVO> tree() {
+		return ForestNodeMerger.merge(baseMapper.tree());
+	}
 
 }

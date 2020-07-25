@@ -25,7 +25,7 @@ import org.springblade.core.mp.support.Query;
 import org.springblade.core.tool.api.R;
 import org.springblade.core.tool.utils.Func;
 import org.springblade.modules.dataview.entity.Task;
-import org.springblade.modules.dataview.service.ITaskService;
+import org.springblade.modules.dataview.service.ITaskCaseService;
 import org.springblade.modules.dataview.vo.TaskVO;
 import org.springblade.modules.dataview.wrapper.TaskWrapper;
 import org.springframework.web.bind.annotation.*;
@@ -45,9 +45,9 @@ import java.util.Map;
 @AllArgsConstructor
 @RequestMapping("bdc-data/task")
 @Api(value = "", tags = "接口")
-public class TaskController extends BladeController {
+public class TaskCaseController extends BladeController {
 
-	private ITaskService taskService;
+	private ITaskCaseService taskService;
 
 	/**
 	 * 详情
