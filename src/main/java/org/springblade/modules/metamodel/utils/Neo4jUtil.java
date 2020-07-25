@@ -1,8 +1,6 @@
 package org.springblade.modules.metamodel.utils;
 
-import org.neo4j.driver.Driver;
-import org.neo4j.driver.Session;
-import org.neo4j.driver.Transaction;
+import org.neo4j.driver.*;
 import org.neo4j.driver.internal.InternalNode;
 import org.neo4j.driver.internal.InternalRelationship;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +37,32 @@ public class Neo4jUtil {
             //提交事务
             tx.commit();
         } catch (Exception e) {
+			e.printStackTrace();
         	if(tx!=null){
         		tx.rollback();
 			}
-            e.printStackTrace();
         } finally {
 			if(tx!=null){
 				tx.close();
 			}
 		}
     }
+
+	/**
+	 * 返回所有图节点
+	 * @param cql
+	 * @return
+	 */
+	public static List<Record> getNeoNodesOrEdges(String cql) {
+		List<Record> records= new ArrayList<>();
+    	try {
+			Session session = driver.session();
+			records = session.run(cql).list();
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			return records;
+		}
+	}
+
 }
