@@ -13,53 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.modules.system.mapper;
+package org.springblade.modules.dataview.mapper;
 
+import org.springblade.modules.dataview.entity.Fieldset;
+import org.springblade.modules.dataview.vo.FieldsetVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.modules.system.entity.Dict;
-import org.springblade.modules.system.vo.DictVO;
-
 import java.util.List;
 
 /**
- * Mapper 接口
+ *  Mapper 接口
  *
- * @author Chill
+ * @author Blade
+ * @since 2020-07-08
  */
-public interface DictMapper extends BaseMapper<Dict> {
+public interface FieldsetMapper extends BaseMapper<Fieldset> {
 
 	/**
 	 * 自定义分页
 	 *
 	 * @param page
-	 * @param dict
+	 * @param fieldset
 	 * @return
 	 */
-	List<DictVO> selectDictPage(IPage page, DictVO dict);
+	List<FieldsetVO> selectFieldsetPage(IPage page, FieldsetVO fieldset);
 
 	/**
-	 * 获取字典表对应中文
-	 *
-	 * @param code    字典编号
-	 * @param dictKey 字典序号
+	 * 通过父id删除子表数据
+	 * @param datanodeId
 	 * @return
 	 */
-	String getValue(String code, String dictKey);
+	int removeByParentID(Long datanodeId);
 
 	/**
-	 * 获取字典表
-	 *
-	 * @param code 字典编号
+	 * 批量插入数据
+	 * @param fieldsetList
 	 * @return
 	 */
-	List<Dict> getList(String code);
+	int insertBatch(List<Fieldset> fieldsetList);
 
 	/**
-	 * 获取树形节点
-	 *
+	 * 批量插入数据
+	 * @param datanodeId
 	 * @return
 	 */
-	List<DictVO> tree();
-
+	List<Fieldset> getByDatanodeID(Long datanodeId);
 }

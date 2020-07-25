@@ -78,7 +78,7 @@ public class Task implements Serializable {
      * 所属型号
      */
     @ApiModelProperty(value = "所属型号")
-    private Long modelid;
+    private String modelid;
     /**
      * 大数据统一编码
      */

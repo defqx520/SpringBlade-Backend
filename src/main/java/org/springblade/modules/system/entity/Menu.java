@@ -95,19 +95,19 @@ public class Menu implements Serializable {
 	 * 菜单类型
 	 */
 	@ApiModelProperty(value = "菜单类型")
-	private Integer category;
+	private String category;
 
 	/**
 	 * 操作按钮类型
 	 */
 	@ApiModelProperty(value = "操作按钮类型")
-	private Integer action;
+	private String action;
 
 	/**
 	 * 是否打开新页面
 	 */
 	@ApiModelProperty(value = "是否打开新页面")
-	private Integer isOpen;
+	private String isOpen;
 
 	/**
 	 * 备注

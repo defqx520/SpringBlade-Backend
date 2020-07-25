@@ -86,7 +86,7 @@ public class User extends TenantEntity {
 	/**
 	 * 性别
 	 */
-	private Integer sex;
+	private String sex;
 	/**
 	 * 角色id
 	 */

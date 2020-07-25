@@ -57,7 +57,7 @@ public class Notice extends BaseEntity {
 	 * 通知类型
 	 */
 	@ApiModelProperty(value = "通知类型")
-	private Integer category;
+	private String category;
 
 	/**
 	 * 发布日期

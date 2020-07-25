@@ -13,48 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.modules.system.wrapper;
+package org.springblade.modules.dataview.wrapper;
 
 import org.springblade.core.mp.support.BaseEntityWrapper;
 import org.springblade.core.tool.utils.BeanUtil;
-import org.springblade.core.tool.utils.Func;
 import org.springblade.core.tool.utils.SpringUtil;
-import org.springblade.modules.system.entity.User;
+import org.springblade.modules.dataview.entity.Fieldset;
+import org.springblade.modules.dataview.vo.FieldsetVO;
 import org.springblade.modules.system.service.IDictService;
-import org.springblade.modules.system.service.IUserService;
-import org.springblade.modules.system.vo.UserVO;
-
-import java.util.List;
 
 /**
  * 包装类,返回视图层所需的字段
  *
- * @author Chill
+ * @author Blade
+ * @since 2020-07-08
  */
-public class UserWrapper extends BaseEntityWrapper<User, UserVO> {
-
-	private static IUserService userService;
+public class FieldsetWrapper extends BaseEntityWrapper<Fieldset, FieldsetVO>  {
 
 	private static IDictService dictService;
 
 	static {
-		userService = SpringUtil.getBean(IUserService.class);
 		dictService = SpringUtil.getBean(IDictService.class);
 	}
 
-	public static UserWrapper build() {
-		return new UserWrapper();
-	}
+    public static FieldsetWrapper build() {
+        return new FieldsetWrapper();
+    }
 
 	@Override
-	public UserVO entityVO(User user) {
-		UserVO userVO = BeanUtil.copy(user, UserVO.class);
-		List<String> roleName = userService.getRoleName(user.getRoleId());
-		List<String> deptName = userService.getDeptName(user.getDeptId());
-		userVO.setRoleName(Func.join(roleName));
-		userVO.setDeptName(Func.join(deptName));
-		userVO.setSexName(dictService.getValue("sex", user.getSex()));
-		return userVO;
+	public FieldsetVO entityVO(Fieldset fieldset) {
+		FieldsetVO fieldsetVO = BeanUtil.copy(fieldset, FieldsetVO.class);
+		fieldsetVO.setColumnTypeName(dictService.getValue("data_field_type", fieldset.getColumnType()));
+		fieldsetVO.setColumnIsnullName(dictService.getValue("yes_no", fieldset.getColumnIsnull()));
+		return fieldsetVO;
 	}
 
 }

@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.modules.system.entity;
+package org.springblade.modules.dataview.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -30,14 +29,15 @@ import java.io.Serializable;
 /**
  * 实体类
  *
- * @author Chill
+ * @author Blade
+ * @since 2020-07-08
  */
 @Data
-@TableName("blade_dict")
-@ApiModel(value = "Dict对象", description = "Dict对象")
-public class Dict implements Serializable {
+@TableName("bdc_fieldset")
+@ApiModel(value = "Fieldset对象", description = "Fieldset对象")
+public class Fieldset implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 	/**
 	 * 主键
@@ -46,50 +46,42 @@ public class Dict implements Serializable {
 	@TableId(value = "id", type = IdType.ASSIGN_ID)
 	@JsonSerialize(using = ToStringSerializer.class)
 	private Long id;
-
-	/**
-	 * 父主键
-	 */
-	@ApiModelProperty(value = "父主键")
-	@JsonSerialize(using = ToStringSerializer.class)
-	private Long parentId;
-
-	/**
-	 * 字典码
-	 */
-	@ApiModelProperty(value = "字典码")
-	private String code;
-
-	/**
-	 * 字典值
-	 */
-	@ApiModelProperty(value = "字典值")
-	private String dictKey;
-
-	/**
-	 * 字典名称
-	 */
-	@ApiModelProperty(value = "字典名称")
-	private String dictValue;
-
-	/**
-	 * 排序
-	 */
-	@ApiModelProperty(value = "排序")
-	private Integer sort;
-
-	/**
-	 * 字典备注
-	 */
-	@ApiModelProperty(value = "字典备注")
-	private String remark;
-
-	/**
-	 * 是否已删除
-	 */
-	@TableLogic
-	@ApiModelProperty(value = "是否已删除")
-	private Integer isDeleted;
+    /**
+     * 指标名称
+     */
+    @ApiModelProperty(value = "指标名称")
+    private String columnName;
+    /**
+     * 指标类型
+     */
+    @ApiModelProperty(value = "指标类型")
+    private String columnType;
+    /**
+     * 指标长度
+     */
+    @ApiModelProperty(value = "指标长度")
+    private Integer columnLength;
+    /**
+     * 小数点位数
+     */
+    @ApiModelProperty(value = "小数点位数")
+    private Integer columnPoint;
+  private String columnDefaultValue;
+    /**
+     * 指标注释
+     */
+    @ApiModelProperty(value = "指标注释")
+    private String columnNote;
+    /**
+     * 是否允许为空
+     */
+    @ApiModelProperty(value = "是否允许为空")
+    private String columnIsnull;
+    /**
+     * 所属专业
+     */
+    @ApiModelProperty(value = "关联节点")
+    private Long datanodeId;
 
 
 }

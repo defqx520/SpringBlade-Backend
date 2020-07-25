@@ -58,7 +58,7 @@ public class TaskWrapper extends BaseEntityWrapper<Task, TaskVO> {
 			Task parent = taskService.getById(task.getParentId());
 			taskVO.setParentName(parent.getTaskname());
 		}
-		taskVO.setModelName(dictService.getValue("model_list", Func.toInt(task.getModelid())));
+		taskVO.setModelName(dictService.getValue("model_list", task.getModelid()));
 		return taskVO;
 	}
 

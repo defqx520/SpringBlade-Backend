@@ -13,53 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.modules.system.mapper;
+package org.springblade.modules.dataview.mapper;
 
+import org.springblade.modules.dataview.entity.Datanode;
+import org.springblade.modules.dataview.vo.DatanodeVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springblade.modules.system.entity.Dict;
-import org.springblade.modules.system.vo.DictVO;
-
 import java.util.List;
 
 /**
- * Mapper 接口
+ *  Mapper 接口
  *
- * @author Chill
+ * @author Blade
+ * @since 2020-07-08
  */
-public interface DictMapper extends BaseMapper<Dict> {
+public interface DatanodeMapper extends BaseMapper<Datanode> {
 
 	/**
 	 * 自定义分页
 	 *
 	 * @param page
-	 * @param dict
+	 * @param datanode
 	 * @return
 	 */
-	List<DictVO> selectDictPage(IPage page, DictVO dict);
-
-	/**
-	 * 获取字典表对应中文
-	 *
-	 * @param code    字典编号
-	 * @param dictKey 字典序号
-	 * @return
-	 */
-	String getValue(String code, String dictKey);
-
-	/**
-	 * 获取字典表
-	 *
-	 * @param code 字典编号
-	 * @return
-	 */
-	List<Dict> getList(String code);
-
-	/**
-	 * 获取树形节点
-	 *
-	 * @return
-	 */
-	List<DictVO> tree();
+	List<DatanodeVO> selectDatanodePage(IPage page, DatanodeVO datanode);
 
 }

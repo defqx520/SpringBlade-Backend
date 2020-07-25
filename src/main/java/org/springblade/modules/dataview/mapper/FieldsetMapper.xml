@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.springblade.modules.dataview.mapper.FieldsetMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="fieldsetResultMap" type="org.springblade.modules.dataview.entity.Fieldset">
+        <id column="id" property="id"/>
+        <result column="column_name" property="columnName"/>
+        <result column="column_type" property="columnType"/>
+        <result column="column_length" property="columnLength"/>
+        <result column="column_point" property="columnPoint"/>
+        <result column="column_default_value" property="columnDefaultValue"/>
+        <result column="column_note" property="columnNote"/>
+        <result column="column_isnull" property="columnIsnull"/>
+        <result column="datanode_id" property="datanodeId"/>
+    </resultMap>
+
+
+    <select id="selectFieldsetPage" resultMap="fieldsetResultMap">
+        select * from bdc_fieldset where is_deleted = 0
+    </select>
+
+    <delete id="removeByParentID" parameterType="java.lang.Long" >
+        delete from bdc_fieldset where datanode_id = #{datanodeId}
+    </delete>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        INSERT INTO bdc_fieldset
+        (id, column_name, column_type, column_length, column_point, column_default_value, column_note, column_isnull, datanode_id)
+        VALUES
+        <foreach collection ="list" item="fieldset" separator =",">
+            (
+            #{fieldset.id}, #{fieldset.columnName},
+            #{fieldset.columnType}, #{fieldset.columnLength},
+            #{fieldset.columnPoint}, #{fieldset.columnDefaultValue},
+            #{fieldset.columnNote}, #{fieldset.columnIsnull}, #{fieldset.datanodeId}
+            )
+        </foreach >
+    </insert>
+
+    <select id="getByDatanodeID" parameterType="java.lang.Long" resultMap="fieldsetResultMap">
+        select * from bdc_fieldset where datanode_id = #{datanodeId}
+    </select>
+</mapper>

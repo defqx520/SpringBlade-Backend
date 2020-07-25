@@ -51,7 +51,7 @@ public class Post extends TenantEntity {
 	 * 类型
 	 */
 	@ApiModelProperty(value = "类型")
-	private Integer category;
+	private String category;
 	/**
 	 * 岗位编号
 	 */

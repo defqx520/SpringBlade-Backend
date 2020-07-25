@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.springblade.modules.dataview.mapper.DatanodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="datanodeResultMap" type="org.springblade.modules.dataview.entity.Datanode">
+        <id column="id" property="id"/>
+        <result column="datanode_name" property="datanodeName"/>
+        <result column="datanode_code" property="datanodeCode"/>
+        <result column="datanode_tag" property="datanodeTag"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+
+
+    <select id="selectDatanodePage" resultMap="datanodeResultMap">
+        select * from bdc_datanode where is_deleted = 0
+    </select>
+
+</mapper>
