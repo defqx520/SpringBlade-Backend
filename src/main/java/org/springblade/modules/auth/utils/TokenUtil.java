@@ -43,7 +43,8 @@ public class TokenUtil {
 	public final static String USER_NOT_FOUND = "用户名或密码错误";
 	public final static String HEADER_KEY = "Authorization";
 	public final static String HEADER_PREFIX = "Basic ";
-	public final static String DEFAULT_AVATAR = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png";
+//	public final static String DEFAULT_AVATAR = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png";
+	public final static String DEFAULT_AVATAR = "/img/bg/touxiang.png";
 
 	/**
 	 * 创建认证token

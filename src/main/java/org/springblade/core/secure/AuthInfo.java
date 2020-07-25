@@ -34,7 +34,8 @@ public class AuthInfo {
 	@ApiModelProperty(value = "刷新令牌")
 	private String refreshToken;
 	@ApiModelProperty(value = "头像")
-	private String avatar = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png";
+//	private String avatar = "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png";
+	private String avatar = "/img/bg/touxiang.png";
 	@ApiModelProperty(value = "角色名")
 	private String authority;
 	@ApiModelProperty(value = "用户名")
