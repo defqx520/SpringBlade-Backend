@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@TableName("dev_dispatch")
+@TableName("dev_dispatch_view")
 @ApiModel(value = "调度单对象", description = "调度单对象")
 public class Dispatch {
 

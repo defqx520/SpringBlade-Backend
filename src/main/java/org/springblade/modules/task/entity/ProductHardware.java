@@ -9,7 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@TableName("dev_product_hardware")
+@TableName("dev_product_hardware_view")
 @ApiModel(value = "装备实体对象", description = "装备实体对象")
 public class ProductHardware implements Serializable {
 

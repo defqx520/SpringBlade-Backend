@@ -22,6 +22,8 @@
         <result column="outsource_org" property="outsourceOrg"/>
         <result column="use_troops" property="useTroops"/>
         <result column="complete_date" property="completeDate"/>
+        <result column="is_zero" property="isZero"/>
+        <result column="plan_complete_date" property="planCompleteDate"/>
     </resultMap>
 
 

@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @since 2020-07-20
  */
 @Data
-@TableName("dev_question")
+@TableName("dev_question_view")
 @ApiModel(value = "Question对象", description = "Question对象")
 public class Question implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -53,6 +53,8 @@ public class Question implements Serializable {
 	private String outsourceOrg;
 	private String useTroops;
 	private LocalDate completeDate;
+	private String isZero;
+	private LocalDate planCompleteDate;
 
 
 }

@@ -30,6 +30,5 @@ import io.swagger.annotations.ApiModel;
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(value = "TaskNodeMapVO对象", description = "TaskNodeMapVO对象")
 public class TaskNodeMapVO extends TaskNodeMap {
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -224405287083498894L;
 }

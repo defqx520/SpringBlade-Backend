@@ -34,6 +34,7 @@ public class BladeConfiguration implements WebMvcConfigurer {
 	public SecureRegistry secureRegistry() {
 		SecureRegistry secureRegistry = new SecureRegistry();
 		secureRegistry.setEnabled(true);
+		secureRegistry.excludePathPatterns("/download");
 		secureRegistry.excludePathPatterns("/blade-auth/**");
 		secureRegistry.excludePathPatterns("/blade-log/**");
 		secureRegistry.excludePathPatterns("/blade-system/menu/auth-routes");
